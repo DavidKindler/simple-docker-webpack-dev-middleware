@@ -1,20 +1,25 @@
-web:
-  build: .
-  ports:
-    - '3000:3000'
-  volumes:
-    - /usr/src/app/node_modules
-    - .:/usr/src/app/:rw
-  environment:
-    - NODE_ENV=development
-  command: >
-    sh -c '
-      # if test -d node_modules; 
-      # then 
-      #   echo node_modules_exists ; 
-      # else 
-      #   cp -a /tmp/node_modules /usr/src/app/website; 
-      # fi && 
-      npm install && 
-      /usr/local/bin/node ./index.js
-    '
+version: '3.7'
+
+services:
+  web:
+    build: .
+    image: sample-docker-webpack-dev-middleware
+    ports:
+      - '3000:3000'
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app/:rw
+    environment:
+      - NODE_ENV=development
+    command: >
+      sh -c '
+        # if test -d node_modules;
+        # then
+        #   echo node_modules_exists ;
+        # else
+        #   # cp -a /tmp/node_modules /usr/src/app/website;
+        #   echo "not doing the copy"
+        # fi &&
+        # npm install &&
+        /usr/local/bin/node ./index.js
+      '
