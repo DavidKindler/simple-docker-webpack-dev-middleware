@@ -1,6 +1,6 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
-
-export default class Greeting extends React.Component {
+class Greeting extends React.Component {
   constructor() {
     super();
   }
@@ -13,3 +13,6 @@ export default class Greeting extends React.Component {
     );
   }
 }
+
+
+export default hot(Greeting);

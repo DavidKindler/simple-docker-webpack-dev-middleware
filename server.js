@@ -4,7 +4,7 @@ import express from 'express';
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
-
+console.log('isDeveloping ===> ', isDeveloping);
 if (isDeveloping) {
   let webpack = require('webpack');
   let webpackMiddleware = require('webpack-dev-middleware');
@@ -17,6 +17,7 @@ if (isDeveloping) {
     noInfo: true,
     quiet: false,
     lazy: false,
+    hot: true,
     watchOptions: {
       aggregateTimeout: 300,
       poll: true
